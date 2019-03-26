@@ -29,12 +29,33 @@
 
 	<!-- 声明在dependecies元素的依赖将会被子模块继承 -->
 	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.20</version>
+		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 	<modules>
 		<module>01-java-run-theory-analysis</module>
 		<module>02-state-of-thread</module>
 		<module>03-terminal-of-thread</module>
+        <module>04-cpu-cache-and-memory-barrier</module>
+		<module>05-communication-of-thread</module>
+		<module>06-thread-obturate</module>
 	</modules>
 
 </project>
