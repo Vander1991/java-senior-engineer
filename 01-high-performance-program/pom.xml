@@ -57,6 +57,7 @@
 		<module>05-communication-of-thread</module>
 		<module>06-thread-obturate</module>
 		<module>07-thread-pool</module>
+		<module>08-java-memory-model-and-visibility</module>
 	</modules>
 
 </project>
