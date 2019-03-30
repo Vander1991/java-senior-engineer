@@ -50,14 +50,8 @@
 	</build>
 
 	<modules>
-		<module>01-java-run-theory-analysis</module>
-		<module>02-state-of-thread</module>
-		<module>03-terminal-of-thread</module>
-        <module>04-cpu-cache-and-memory-barrier</module>
-		<module>05-communication-of-thread</module>
-		<module>06-thread-obturate</module>
-		<module>07-thread-pool</module>
-		<module>08-java-memory-model-and-visibility</module>
+		<module>01-multi-thread-concurrent-program</module>
+		<module>02-high-concurrent-network-program</module>
 	</modules>
 
 </project>
