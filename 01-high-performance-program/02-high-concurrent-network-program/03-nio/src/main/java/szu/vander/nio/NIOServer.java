@@ -36,19 +36,24 @@ public class NIOServer {
                     System.out.println(new String(content));
                     System.out.println("收到数据,来自："+ socketChannel.getRemoteAddress());
 
-                    // 响应结果 200
-                    String response = "HTTP/1.1 200 OK\r\n" +
-                            "Content-Length: 11\r\n\r\n" +
-                            "Hello World";
-                    ByteBuffer buffer = ByteBuffer.wrap(response.getBytes());
-                    while (buffer.hasRemaining()) {
-                        socketChannel.write(buffer);// 非阻塞
-                    }
+                    response200(socketChannel);
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }
         // 用到了非阻塞的API, 在设计上,和BIO可以有很大的不同.继续改进
+    }
+
+    public static void response200(SocketChannel socketChannel) throws IOException {
+        // 响应结果 200
+        String response = "HTTP/1.1 200 OK\r\n" +
+                "Content-Length: 11\r\n\r\n" +
+                "Hello World";
+        ByteBuffer buffer = ByteBuffer.wrap(response.getBytes());
+        while (buffer.hasRemaining()) {
+            socketChannel.write(buffer);// 非阻塞
+        }
     }
 }
