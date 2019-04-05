@@ -26,8 +26,12 @@ public class SocketChannelUtil {
         while(socketChannel.isOpen() && socketChannel.read(byteBuffer) != -1){
             if (byteBuffer.position() > 0) break;
         }
-        byte[] content = new byte[byteBuffer.limit()];
+        if (byteBuffer.position() == 0) {
+            // 说明缓冲区没有数据
+            return null;
+        }
         byteBuffer.flip();
+        byte[] content = new byte[byteBuffer.limit()];
         byteBuffer.get(content);
         return content;
     }
