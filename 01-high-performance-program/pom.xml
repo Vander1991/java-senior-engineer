@@ -52,6 +52,7 @@
 	<modules>
 		<module>01-multi-thread-concurrent-program</module>
 		<module>02-high-concurrent-network-program</module>
-	</modules>
+        <module>03-system-performance-tuning</module>
+    </modules>
 
 </project>
