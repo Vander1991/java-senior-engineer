@@ -18,17 +18,9 @@ import java.util.Set;
  */
 public class BasicReactorNIOServer {
 
-    private static int MAXIN = 1024;
-
-    private static int MAXOUT = 1024;
-
-    private int port;
-
     public BasicReactorNIOServer(int port) throws IOException {
-        this.port = port;
         Reactor reactor = new Reactor(port);
         reactor.run();
-
     }
 
     class Reactor implements Runnable {
@@ -46,10 +38,9 @@ public class BasicReactorNIOServer {
             serverSocket = ServerSocketChannel.open();
             serverSocket.socket().bind(new InetSocketAddress(port));
             serverSocket.configureBlocking(false);
-            SelectionKey sk = serverSocket.register(selector, SelectionKey.OP_ACCEPT);
-            sk.attach(new Acceptor());
+            SelectionKey selectionKey = serverSocket.register(selector, SelectionKey.OP_ACCEPT);
+            selectionKey.attach(new Acceptor());
         }
-
 
         public void run() { // normally in a new Thread
             try {
@@ -75,9 +66,12 @@ public class BasicReactorNIOServer {
         class Acceptor implements Runnable { // inner
             public void run() {
                 try {
-                    SocketChannel c = serverSocket.accept();
-                    if (c != null)
-                        new Handler(selector, c);
+                    SocketChannel socketChannel = serverSocket.accept();
+                    if (socketChannel != null) {
+                        System.out.println(String.format("接收客户端%s的连接，并将socketChannel分发给Handler处理！", socketChannel.getRemoteAddress()));
+                        new Handler(selector, socketChannel);
+                    }
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -87,12 +81,11 @@ public class BasicReactorNIOServer {
     }
 
     final class Handler implements Runnable {
+
         final SocketChannel socketChannel;
         final SelectionKey selectionKey;
-        ByteBuffer inputByteBuf = ByteBuffer.allocate(MAXIN);
-        ByteBuffer output = ByteBuffer.allocate(MAXOUT);
-        static final int READING = 0, SENDING = 1;
-        int state = READING;
+
+        ByteBuffer inputByteBuf = ByteBuffer.allocate(1024);
 
         Handler(Selector selector, SocketChannel socketChannel) throws IOException {
             this.socketChannel = socketChannel;
@@ -107,12 +100,29 @@ public class BasicReactorNIOServer {
         public void run() {
             try {
                 byte[] content = SocketChannelUtil.readChannelBytes(socketChannel, inputByteBuf);
+                // 若读取不到数据却能监听到读事件，可能是因为连接已经断开了
+                if (content == null) {
+                    System.out.println("读取不到数据却能监听到读事件，可能是因为连接已经断开了，取消当前事件的监听！");
+                    selectionKey.cancel();
+                    return;
+                }
+                // 清理缓冲区
+                inputByteBuf.clear();
                 System.out.println(String.format("从客户端：%s读取到内容：%s", socketChannel.getRemoteAddress(), new String(content)));
+                SocketChannelUtil.response200(socketChannel);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
+    }
+
+    public static void main(String args[]) {
+        try {
+            BasicReactorNIOServer basicReactorNIOServer = new BasicReactorNIOServer(8888);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

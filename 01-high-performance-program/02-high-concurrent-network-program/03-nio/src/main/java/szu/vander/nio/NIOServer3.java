@@ -108,11 +108,13 @@ public class NIOServer3 {
      * 初始化线程组
      */
     private void newGroup() throws IOException {
+        System.out.println(String.format("线程%s：开始创建mainReactor线程组和subReactor线程组！", Thread.currentThread().toString()));
         // 创建IO线程,负责处理客户端连接以后socketChannel的IO读写
         for (int i = 0; i < subReactorThreads.length; i++) {
             subReactorThreads[i] = new ReactorThread() {
                 @Override
                 public void handler(SelectableChannel channel) throws IOException {
+                    System.out.println(String.format("subReactor线程组中的线程%s：开始执行！", Thread.currentThread().toString()));
                     // work线程只负责处理IO处理，不处理accept事件
                     SocketChannel ch = (SocketChannel) channel;
                     ByteBuffer requestBuffer = ByteBuffer.allocate(1024);
@@ -120,12 +122,14 @@ public class NIOServer3 {
                         // 长连接情况下,需要手动判断数据有没有读取结束 (此处做一个简单的判断: 超过0字节就认为请求结束了)
                         if (requestBuffer.position() > 0) break;
                     }
-                    if (requestBuffer.position() == 0) return; // 如果没数据了, 则不继续后面的处理
+                    // 如果没数据了, 则不继续后面的处理
+                    if (requestBuffer.position() == 0) {
+                        ch.close();
+                    }
                     requestBuffer.flip();
                     byte[] content = new byte[requestBuffer.limit()];
                     requestBuffer.get(content);
-                    System.out.println(new String(content));
-                    System.out.println(Thread.currentThread().getName() + "收到数据,来自：" + ch.getRemoteAddress());
+                    System.out.println(String.format("线程%s收到来自客户端%s的数据：%s", Thread.currentThread().getName(), ch.getRemoteAddress(), new String(content)));
 
                     // TODO 业务操作 数据库、接口...
                     workPool.submit(() -> {
@@ -150,6 +154,7 @@ public class NIOServer3 {
 
                 @Override
                 public void handler(SelectableChannel channel) throws Exception {
+                    System.out.println(String.format("mainReactor线程组中的线程%s：开始执行！", Thread.currentThread().toString()));
                     // 只做请求分发，不做具体的数据读取
                     ServerSocketChannel ch = (ServerSocketChannel) channel;
                     SocketChannel socketChannel = ch.accept();
