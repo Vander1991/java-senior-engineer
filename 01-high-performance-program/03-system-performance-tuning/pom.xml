@@ -10,9 +10,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>03-system-performance-tuning</artifactId>
+    <packaging>pom</packaging>
 
     <modules>
         <module>01-classloader</module>
+        <module>02-gc</module>
+        <module>03-jdk-cmd</module>
+        <module>04-jvm-paramter-tuning</module>
+        <module>05-tomcat-network-thread-model</module>
+        <module>06-tomcat-parameter-tunning</module>
     </modules>
 
 </project>
