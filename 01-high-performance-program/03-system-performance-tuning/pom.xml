@@ -18,7 +18,7 @@
         <module>03-jdk-cmd</module>
         <module>04-jvm-paramter-tuning</module>
         <module>05-tomcat-network-thread-model</module>
-        <module>06-tomcat-parameter-tunning</module>
+        <module>06-tomcat-parameter-tuning</module>
     </modules>
 
 </project>
