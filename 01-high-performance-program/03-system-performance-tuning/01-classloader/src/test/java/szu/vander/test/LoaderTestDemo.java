@@ -10,12 +10,16 @@ public class LoaderTestDemo {
     public static String value = initStaticVariable();
 
     static {
-        System.out.println("hello static{}");
+        System.out.println("exec static{}");
     }
 
     public static String initStaticVariable() {
         System.out.println("init static variable!!!");
         return "i am a static variable!!!";
+    }
+
+    public static void staticMethod() {
+        System.out.println("I am static method!!!");
     }
 
     public String hello(){
