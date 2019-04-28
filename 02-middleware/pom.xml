@@ -2,19 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>java-senior-engineer</artifactId>
+        <groupId>szu.vander</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>szu.vander</groupId>
-    <artifactId>java-senior-engineer</artifactId>
+
+    <artifactId>02-middleware</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1-SNAPSHOT</version>
-
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
-
-	<modules>
-		<module>01-high-performance-program</module>
-        <module>02-middleware</module>
+    <modules>
+        <module>01-distributed-message-middleware</module>
     </modules>
+
 
 </project>
