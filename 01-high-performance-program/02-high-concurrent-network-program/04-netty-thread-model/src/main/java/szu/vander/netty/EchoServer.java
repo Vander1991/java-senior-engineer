@@ -16,17 +16,12 @@
 package szu.vander.netty;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.ChannelPipeline;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
-import io.netty.util.concurrent.GenericFutureListener;
 
 /**
  * Echoes back any received data from a client.
@@ -43,15 +38,17 @@ public final class EchoServer {
         try {
             // 服务端启动引导工具类
             ServerBootstrap b = new ServerBootstrap();
-            // 配置服务端处理的reactor线程组以及服务端的其他配置
-            b.group(bossGroup, workerGroup2).channel(NioServerSocketChannel.class).option(ChannelOption.SO_BACKLOG, 100)
-                    .handler(new LoggingHandler(LogLevel.DEBUG)).childHandler(new ChannelInitializer<SocketChannel>() {
+            // 自定义handler
+            ChannelHandler channelChildHandler = new ChannelInitializer<SocketChannel>() {
                 @Override
                 public void initChannel(SocketChannel ch) throws Exception {
                     ChannelPipeline p = ch.pipeline();
                     p.addLast(new EchoServerHandler());
                 }
-            });
+            };
+            // 配置服务端处理的reactor线程组以及服务端的其他配置
+            b.group(bossGroup, workerGroup2).channel(NioServerSocketChannel.class).option(ChannelOption.SO_BACKLOG, 100)
+                    .handler(new LoggingHandler(LogLevel.DEBUG)).childHandler(channelChildHandler);
             // 通过bind启动服务
             ChannelFuture f = b.bind(PORT).sync();
             // 阻塞主线程，知道网络服务被关闭
