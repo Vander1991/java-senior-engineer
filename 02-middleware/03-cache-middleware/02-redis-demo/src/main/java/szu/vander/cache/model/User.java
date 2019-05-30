@@ -1,4 +1,4 @@
-package szu.vander.model;
+package szu.vander.cache.model;
 
 import lombok.*;
 
@@ -10,6 +10,6 @@ import java.io.Serializable;
 @Setter
 @ToString
 public class User implements Serializable {
-    private String userName;
     private String userId;
+    private String userName;
 }
