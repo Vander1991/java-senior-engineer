@@ -15,6 +15,7 @@
 	<modules>
 		<module>01-high-performance-program</module>
         <module>02-middleware</module>
+        <module>distributed-system-reference</module>
     </modules>
 
 </project>
