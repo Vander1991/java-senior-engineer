@@ -11,8 +11,8 @@ import szu.vander.sharding.jdbc.model.Order;
 public interface OrderDao {
 
 
-//    @Insert("insert into t_order(order_time,customer_id) values(#{orderTime},#{customerId})")
-    @Insert("insert into t_order(order_id,order_time,customer_id) values(#{orderId},#{orderTime},#{customerId})")
+    @Insert("insert into t_order(order_time,customer_id) values(#{orderTime},#{customerId})")
+//    @Insert("insert into t_order(order_id,order_time,customer_id) values(#{orderId},#{orderTime},#{customerId})")
     void addOrder(Order o);
 
     @Select("select order_id,order_time,customer_id from t_order where order_id=#{id}")

@@ -55,7 +55,7 @@ public class Producer {
     }
 
     public static void main(String[] args) {
-        new ProducerThread("tcp://192.168.125.233:61616", "simpleQueue").start();
+        new ProducerThread("tcp://192.168.118.142:61616", "simpleQueue").start();
     }
 
 }
