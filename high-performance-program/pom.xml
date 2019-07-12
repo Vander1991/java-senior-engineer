@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>szu.vander</groupId>
+		<artifactId>java-senior-engineer</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>	
+	<groupId>szu.vander</groupId>
+	<artifactId>high-performance-program</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>high-performance-program</name>
+	<description>Java高性能编程</description>
+	<packaging>pom</packaging>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<operator.version>0.0.1-SNAPSHOT</operator.version>
+	</properties>
+
+	<!-- dependencyManagement元素既能让子模块继承父模块的配置，又能让子模块依赖使用灵活。 dependencyManagement元素下的依赖不会实际引入到子模块的依赖中，但能约束子模块的依赖使用， 
+		如：一旦子模块需要使用这个依赖，版本号将被限制 -->
+	<dependencyManagement>
+		<dependencies>
+		</dependencies>
+	</dependencyManagement>
+
+	<!-- 声明在dependecies元素的依赖将会被子模块继承 -->
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.20</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<modules>
+		<module>multi-thread-concurrent-program</module>
+		<module>high-concurrent-network-program</module>
+        <module>system-performance-tuning</module>
+    </modules>
+
+</project>
