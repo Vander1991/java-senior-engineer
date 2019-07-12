@@ -12,7 +12,6 @@
     <artifactId>kafka-demo</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>word-count</module>
         <module>kafka-demo-spring</module>
         <module>word-count</module>
     </modules>

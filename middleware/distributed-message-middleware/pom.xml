@@ -14,6 +14,7 @@
     <modules>
         <module>activemq-demo</module>
         <module>kafka-demo</module>
+        <module>interceptor</module>
     </modules>
 
 
