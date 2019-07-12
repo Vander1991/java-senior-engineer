@@ -13,8 +13,8 @@
     </properties>
 
 	<modules>
-		<module>01-high-performance-program</module>
-        <module>02-middleware</module>
+		<module>high-performance-program</module>
+        <module>middleware</module>
         <module>distributed-system-reference</module>
     </modules>
 
