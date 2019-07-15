@@ -5,19 +5,23 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/**
+ * @author : caiwj
+ * @date :   2019/7/15
+ * @description : 使用Java序列化来编组解组
+ */
 public class JavaSerializeMessageProtocol implements MessageProtocol {
 
 	private byte[] serialize(Object obj) throws Exception {
 		ByteArrayOutputStream bout = new ByteArrayOutputStream();
 		ObjectOutputStream out = new ObjectOutputStream(bout);
+		// 利用Java序列化来writeObj
 		out.writeObject(obj);
-
 		return bout.toByteArray();
 	}
 
 	@Override
 	public byte[] marshallingRequest(Request req) throws Exception {
-
 		return this.serialize(req);
 	}
 

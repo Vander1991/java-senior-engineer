@@ -8,6 +8,7 @@ import java.util.List;
 import org.I0Itec.zkclient.ZkClient;
 
 import com.alibaba.fastjson.JSON;
+import szu.vander.rpc.common.constant.RpcReferConstant;
 import szu.vander.rpc.server.register.SimpleZkSerializer;
 import szu.vander.rpc.util.PropertiesUtils;
 
@@ -20,17 +21,15 @@ public class ZookeeperServiceInfoDiscoverer implements ServiceDiscoverer {
 
 	private ZkClient zkClient;
 
-	private final static String RPC_SERVICES_ROOT_PATH = "/vander-rpc";
-
 	public ZookeeperServiceInfoDiscoverer() {
-		String addr = PropertiesUtils.getProperties("zk.address");
+		String addr = PropertiesUtils.getProperties(RpcReferConstant.PROPERTIES_ZK_SERVER_KEY);
 		zkClient = new ZkClient(addr);
 		zkClient.setZkSerializer(new SimpleZkSerializer());
 	}
 
 	@Override
 	public List<ServiceInfo> getServiceInfo(String name) {
-		String servicePath = RPC_SERVICES_ROOT_PATH + "/" + name + "/service";
+		String servicePath = RpcReferConstant.ZK_SERVICE_ROOT_PATH + "/" + name + "/service";
 		List<String> children = zkClient.getChildren(servicePath);
 		List<ServiceInfo> resources = new ArrayList<>();
 		for (String serviceInfoStr : children) {

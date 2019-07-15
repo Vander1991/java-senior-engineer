@@ -1,10 +1,13 @@
 package szu.vander.rpc.demo.provider;
 
+import szu.vander.rpc.demo.DemoService;
+
 import java.awt.Point;
 
-import com.study.mike.rpc.demo.DemoService;
 
 public class DemoServiceImpl implements DemoService {
+
+	@Override
 	public String sayHello(String name) {
 		return "Hello " + name;
 	}

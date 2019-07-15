@@ -8,7 +8,7 @@ import szu.vander.rpc.discovery.ServiceInfo;
  * @date :   2019/7/14
  * @description :  使用BIO作为客户端
  */
-public class BioClient implements RequestClient {
+public class BioRpcClient implements RpcClient {
 
 	@Override
 	public byte[] sendRequest(byte[] data, ServiceInfo serviceInfo) {

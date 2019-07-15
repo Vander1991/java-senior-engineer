@@ -3,6 +3,9 @@ package szu.vander.rpc.server;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import szu.vander.rpc.common.protocol.MessageProtocol;
 import szu.vander.rpc.common.protocol.Request;
 import szu.vander.rpc.common.protocol.Response;
@@ -10,20 +13,23 @@ import szu.vander.rpc.common.protocol.Status;
 import szu.vander.rpc.server.register.ServiceObject;
 import szu.vander.rpc.server.register.ServiceRegister;
 
+/**
+ * @author : caiwj
+ * @date :   2019/7/15
+ * @description : 
+ */
+@Getter
+@Setter
+@AllArgsConstructor
 public class RequestHandler {
-	private MessageProtocol protocol;
+
+	private MessageProtocol messageProtocol;
 
 	private ServiceRegister serviceRegister;
 
-	public RequestHandler(MessageProtocol protocol, ServiceRegister serviceRegister) {
-		super();
-		this.protocol = protocol;
-		this.serviceRegister = serviceRegister;
-	}
-
 	public byte[] handleRequest(byte[] data) throws Exception {
 		// 1、解组消息
-		Request req = this.protocol.unmarshallingRequest(data);
+		Request req = this.messageProtocol.unmarshallingRequest(data);
 
 		// 2、查找服务对象
 		ServiceObject so = this.serviceRegister.getServiceObject(req.getServiceName());
@@ -47,23 +53,7 @@ public class RequestHandler {
 		}
 
 		// 4、编组响应消息
-		return this.protocol.marshallingResponse(rsp);
-	}
-
-	public MessageProtocol getProtocol() {
-		return protocol;
-	}
-
-	public void setProtocol(MessageProtocol protocol) {
-		this.protocol = protocol;
-	}
-
-	public ServiceRegister getServiceRegister() {
-		return serviceRegister;
-	}
-
-	public void setServiceRegister(ServiceRegister serviceRegister) {
-		this.serviceRegister = serviceRegister;
+		return this.messageProtocol.marshallingResponse(rsp);
 	}
 
 }

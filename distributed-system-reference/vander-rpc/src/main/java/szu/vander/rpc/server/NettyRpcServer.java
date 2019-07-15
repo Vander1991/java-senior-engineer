@@ -23,7 +23,7 @@ import io.netty.handler.logging.LoggingHandler;
 /**
  * @author : Vander
  * @date :   2019/7/14
- * @description :  Netty服务端
+ * @description :  Netty RPC 服务端
  */
 public class NettyRpcServer extends RpcServer {
 	private static Logger logger = LoggerFactory.getLogger(NettyRpcServer.class);

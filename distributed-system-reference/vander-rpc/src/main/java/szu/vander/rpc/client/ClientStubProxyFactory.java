@@ -10,7 +10,7 @@ import java.util.Random;
 
 import lombok.Getter;
 import lombok.Setter;
-import szu.vander.rpc.client.net.RequestClient;
+import szu.vander.rpc.client.net.RpcClient;
 import szu.vander.rpc.common.protocol.MessageProtocol;
 import szu.vander.rpc.common.protocol.Request;
 import szu.vander.rpc.common.protocol.Response;
@@ -30,7 +30,7 @@ public class ClientStubProxyFactory {
 
 	private Map<String, MessageProtocol> supportMessageProtocols;
 
-	private RequestClient requestClient;
+	private RpcClient requestClient;
 
 	private Map<Class<?>, Object> objectCache = new HashMap<>();
 

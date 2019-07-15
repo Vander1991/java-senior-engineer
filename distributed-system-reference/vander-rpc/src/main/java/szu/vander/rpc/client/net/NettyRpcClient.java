@@ -26,9 +26,9 @@ import szu.vander.rpc.discovery.ServiceInfo;
  * @date :   2019/7/14
  * @description :  使用Netty作为客户端
  */
-public class NettyClient implements RequestClient {
+public class NettyRpcClient implements RpcClient {
 
-	private static Logger logger = LoggerFactory.getLogger(NettyClient.class);
+	private static Logger logger = LoggerFactory.getLogger(NettyRpcClient.class);
 
 	@Override
 	public byte[] sendRequest(byte[] data, ServiceInfo serviceInfo) throws Throwable {

@@ -8,7 +8,7 @@ import szu.vander.rpc.discovery.ServiceInfo;
  * @date :   2019/7/14
  * @description :  请求客户端接口，用于将请求发送到Service并接收响应
  */
-public interface RequestClient {
+public interface RpcClient {
 	/**
 	 * 发送请求并接收响应
 	 * @param data

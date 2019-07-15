@@ -7,6 +7,11 @@ package szu.vander.rpc.util;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * @author : caiwj
+ * @date :   2019/7/15
+ * @description : 获取Properties配置文件的内容
+ */
 public class PropertiesUtils {
 
 	private static Properties properties;

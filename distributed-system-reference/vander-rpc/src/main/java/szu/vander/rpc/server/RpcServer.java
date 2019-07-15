@@ -1,5 +1,17 @@
 package szu.vander.rpc.server;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+/**
+ * @author : caiwj
+ * @date :   2019/7/15
+ * @description : 
+ */
+@Setter
+@Getter
+@AllArgsConstructor
 public abstract class RpcServer {
 
 	protected int port;
@@ -7,13 +19,6 @@ public abstract class RpcServer {
 	protected String protocol;
 
 	protected RequestHandler handler;
-
-	public RpcServer(int port, String protocol, RequestHandler handler) {
-		super();
-		this.port = port;
-		this.protocol = protocol;
-		this.handler = handler;
-	}
 
 	/**
 	 * 开启服务
@@ -24,29 +29,5 @@ public abstract class RpcServer {
 	 * 停止服务
 	 */
 	public abstract void stop();
-
-	public int getPort() {
-		return port;
-	}
-
-	public void setPort(int port) {
-		this.port = port;
-	}
-
-	public String getProtocol() {
-		return protocol;
-	}
-
-	public void setProtocol(String protocol) {
-		this.protocol = protocol;
-	}
-
-	public RequestHandler getHandler() {
-		return handler;
-	}
-
-	public void setHandler(RequestHandler handler) {
-		this.handler = handler;
-	}
 
 }
