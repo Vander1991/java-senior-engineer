@@ -9,10 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>distributed-app-coordinate</artifactId>
+    <artifactId>rpc-service-governance</artifactId>
 
     <modules>
-        <module>zookeeper-demo</module>
+        <module>dubbo-demo</module>
+        <module>vander-rpc</module>
     </modules>
 
 </project>
