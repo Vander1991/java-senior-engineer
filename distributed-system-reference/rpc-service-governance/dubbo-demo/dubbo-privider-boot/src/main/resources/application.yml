@@ -1,0 +1,13 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+server.port: 8080
+
+dubbo:
+  application:
+    name: consumer-boot
+  registry:
+    address: zookeeper://192.168.118.168:2181
+  consumer:
+    timeout: 3000
