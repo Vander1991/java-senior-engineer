@@ -14,6 +14,8 @@
 
     <modules>
         <module>distributed-app-coordinate</module>
+        <module>netflix-spring-cloud</module>
+        <module>rpc-service-governance</module>
     </modules>
 
     <build>
