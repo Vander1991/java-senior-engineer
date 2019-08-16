@@ -8,7 +8,7 @@ import java.net.URLClassLoader;
  */
 public class LoaderTest {
     public static void main(String[] args) throws Exception {
-        URL classUrl = new URL("file:C:\\idea_workspace\\java-senior-engineer\\01-high-performance-program\\03-system-performance-tuning\\01-classloader\\target\\test-classes\\");//jvm 类放在位置
+        URL classUrl = new URL("file:C:\\idea_workspace\\java-senior-engineer\\high-performance-program\\03-system-performance-tuning\\01-classloader\\target\\test-classes\\");//jvm 类放在位置
 
         if (true) {
             // 创建一个新的类加载器

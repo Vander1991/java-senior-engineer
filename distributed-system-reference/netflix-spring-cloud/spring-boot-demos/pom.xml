@@ -15,6 +15,7 @@
         <module>boot-simple-demo</module>
         <module>player-spring-boot-starter</module>
         <module>player-starter-test</module>
+        <module>boot-actuator-demo</module>
     </modules>
 
 
