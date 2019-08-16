@@ -24,7 +24,7 @@ public class FileCommunicate {
         new Thread(() -> {
             int runTime = 10;
             while(runTime-- > 0){
-                File file = new File("01-high-performance-program/05-communication-of-thread/src/main/resources/fileCommunicate.log");
+                File file = new File("high-performance-program/communication-of-thread/src/main/resources/fileCommunicate.log");
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
                 String now = String.format("当前时间：%s", df.format(new Date()));
                 try {
@@ -44,7 +44,7 @@ public class FileCommunicate {
         new Thread(() -> {
             int runTime = 10;
             while(runTime-- > 0){
-                File file = new File("01-high-performance-program/05-communication-of-thread/src/main/resources/fileCommunicate.log");
+                File file = new File("high-performance-program/communication-of-thread/src/main/resources/fileCommunicate.log");
                 String now = String.format("当前时间：%s", String.valueOf(System.currentTimeMillis()));
                 try {
                     String content = null;
