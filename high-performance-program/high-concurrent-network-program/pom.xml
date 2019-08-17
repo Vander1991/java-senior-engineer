@@ -19,7 +19,7 @@
         <module>push-system</module>
         <module>netty-practice</module>
     </modules>
-    <name>02-high-concurrent-network-program</name>
+    <name>high-concurrent-network-program</name>
     <description>高并发网络编程</description>
     <packaging>pom</packaging>
 

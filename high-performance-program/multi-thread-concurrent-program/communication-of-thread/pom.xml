@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>05-communication-of-thread</artifactId>
+    <artifactId>communication-of-thread</artifactId>
 
     <dependencies>
         <dependency>

@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>06-thread-obturate</artifactId>
+    <artifactId>thread-obturate</artifactId>
 
 
 </project>

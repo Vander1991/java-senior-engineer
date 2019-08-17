@@ -14,8 +14,7 @@
 
     <modules>
         <module>classloader</module>
-        <module>jvm-paramter-tuning</module>
-        <module>tomcat-network-thread-model</module>
+        <module>jvm-parameter-tuning</module>
         <module>tomcat-parameter-tuning</module>
     </modules>
 
