@@ -13,6 +13,12 @@
     <packaging>pom</packaging>
     <modules>
         <module>spring-boot-demos</module>
+        <module>eureka-demo</module>
+        <module>hello-service1</module>
+        <module>hello-service2</module>
+        <module>hello-consumer</module>
+        <module>ribbon-consumer</module>
+        <module>hystrix-demo</module>
     </modules>
 
 
