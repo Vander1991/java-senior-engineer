@@ -1,0 +1,13 @@
+server:
+  port: 8080
+hello:
+  service:
+    url: http://hello-service/hello
+spring:
+  application:
+    name: hello-consumer
+## 1、定义一个serverList
+## 格式{serverID}:ribbon:listOfServer
+hello-service:
+  ribbon:
+    listOfServers: localhost:8081,localhost:8082
