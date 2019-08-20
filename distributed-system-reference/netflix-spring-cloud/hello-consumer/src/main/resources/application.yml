@@ -1,0 +1,12 @@
+server:
+  port: 8080
+hello:
+  service:
+    url: http://hello-service/hello
+spring:
+  application:
+    name: hello-consumer
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
