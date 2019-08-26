@@ -14,6 +14,7 @@ public class PlayerAutoconfigure {
 
     /**
      * 注入Player Bean
+     *
      * @param playerProperties
      * @return
      */

@@ -23,7 +23,7 @@ public class JmxSimpleMBeanImpl implements JmxSimpleMBean {
 
     @Override
     public String printHello() {
-        return "JmxSimpleMBeanImpl "+ name;
+        return "JmxSimpleMBeanImpl " + name;
     }
 
     @Override

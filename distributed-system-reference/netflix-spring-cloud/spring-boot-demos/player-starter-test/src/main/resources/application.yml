@@ -1,4 +1,4 @@
-game :
-  player :
-    playerId : id-001
-    playerName : Vander
+game:
+  player:
+    playerId: id-001
+    playerName: Vander

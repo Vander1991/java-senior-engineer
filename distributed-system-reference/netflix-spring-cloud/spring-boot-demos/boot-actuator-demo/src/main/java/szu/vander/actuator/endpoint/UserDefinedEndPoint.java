@@ -12,7 +12,7 @@ public class UserDefinedEndPoint {
     @ReadOperation
     public String getName() {
         // spring http端点的json格式
-        return "{\"name\":\""+name+"\"}";
+        return "{\"name\":\"" + name + "\"}";
     }
 
     @DeleteOperation

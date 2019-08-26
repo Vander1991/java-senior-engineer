@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class BootSimpleDemoStarter {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         SpringApplication.run(BootSimpleDemoStarter.class, args);
     }
 

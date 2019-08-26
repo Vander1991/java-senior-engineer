@@ -13,10 +13,11 @@ import org.springframework.context.annotation.Configuration;
 public class ReadWriteSplitRedisTemplateConfiguration {
 
     @Bean
-    @ConditionalOnClass(name="org.springframework.data.redis.core.RedisTemplate")
+    @ConditionalOnClass(name = "org.springframework.data.redis.core.RedisTemplate")
     public ReadWriteSplitRedisTemplate readWriteSplitRedisTemplate() {
         return new ReadWriteSplitRedisTemplate();
     }
+
     /**
      * 带有负载均衡功能的RedisTemplate
      */
