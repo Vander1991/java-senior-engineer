@@ -19,6 +19,9 @@
         <module>hello-consumer</module>
         <module>ribbon-consumer</module>
         <module>hystrix-demo</module>
+        <module>zuul-demo</module>
+        <module>stream-demo</module>
+        <module>gateway-demo</module>
     </modules>
 
 

@@ -1,0 +1,39 @@
+server:
+  port: 8007
+logging:
+  level:
+    root: WARN
+    org.springframework: INFO
+    org.springframework.cloud: INFO
+    org.springframework.interation: INFO
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    # 重要！ 消息发送确认机制开启
+    publisher-confirms: true
+  cloud:
+    stream:
+      binders:
+        rabbit1:
+          # 会在META-INF/spring.binders文件里面找对应的配置
+          type: rabbit
+          # 为这个binder单独指定spring的相关配置
+          environment:
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: guest
+                password: guest
+                # 重要！  开启消息发送确认机制
+                publisher-confirms: true
+      bindings:
+        input:
+          binder: rabbit1
+          destination: things1
+        output:
+          binder: rabbit1
+          destination: things1
