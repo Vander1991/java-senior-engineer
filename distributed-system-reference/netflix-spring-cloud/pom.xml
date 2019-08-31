@@ -22,6 +22,7 @@
         <module>zuul-demo</module>
         <module>stream-demo</module>
         <module>gateway-demo</module>
+        <module>feign-demo</module>
     </modules>
 
 
