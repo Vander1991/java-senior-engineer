@@ -9,14 +9,13 @@ import org.springframework.http.server.reactive.ServerHttpResponse;
 import reactor.core.publisher.Mono;
 
 /**
- * JWT验证的过滤器
- *
- * @author szliugx@gmail.com
- * @create 2018-09-09 下午10:05
- **/
-public class JwtCheckSSSS  extends AbstractGatewayFilterFactory<JwtCheckSSSS.Config> {
+ * @author : Winnie
+ * @date :   2019/8/31
+ * @description :  类名后缀若不是GatewayFilterFactory的话，引入过滤器时需要写全名
+ */
+public class JwtCheckFilterFactory extends AbstractGatewayFilterFactory<JwtCheckFilterFactory.Config> {
 
-    public JwtCheckSSSS() {
+    public JwtCheckFilterFactory() {
         super(Config.class);
     }
 

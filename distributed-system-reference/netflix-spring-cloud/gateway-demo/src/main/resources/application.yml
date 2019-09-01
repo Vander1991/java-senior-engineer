@@ -1,5 +1,5 @@
 server:
-  port: 6000
+  port: 8763
 logging:
   level:
     root: WARN
@@ -10,17 +10,21 @@ spring:
     name: gateway-demo
   cloud:
     gateway:
+      # 连接注册中心
+      discovery:
+        locator:
+          enabled: true
       routes:
-      - id: study
-        uri: http://www.baidu.com
-        predicates:
-          - Path=/index
-#      discovery:
-#        locator:
-#          enabled: true
-
+        - id: study
+          uri: http://www.baidu.com
+          predicates:
+            - Path=/index
+            - Query=xmldata
+          filters:
+            - JwtCheck
 #如果我们用服务id去进行访问,那么请求地址用 http:网关地址/serviceId/具体的url
-#eureka:
-#  client:
-#    service-url:
-#      defaultZone: http://localhost:8000/eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+    enabled: false

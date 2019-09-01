@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>dubbo-consumer-simple</artifactId>
+    <artifactId>dubbo-consumer-xml-simple</artifactId>
 
     <dependencies>
         <dependency>

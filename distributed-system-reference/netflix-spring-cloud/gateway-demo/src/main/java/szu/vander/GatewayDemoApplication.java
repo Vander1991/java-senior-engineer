@@ -3,7 +3,8 @@ package szu.vander;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import szu.vander.filter.JwtCheckSSSS;
+import szu.vander.filter.JwtCheckFilterFactory;
+import szu.vander.filter.JwtCheckGatewayFilterFactory;
 
 /**
  * @author : Vander
@@ -18,8 +19,13 @@ public class GatewayDemoApplication {
     }
 
 //    @Bean
-//    JwtCheckSSSS filterFactory1(){
-//        return new JwtCheckSSSS();
+//    JwtCheckFilterFactory jwtCheckFilterFactory(){
+//        return new JwtCheckFilterFactory();
 //    }
+
+    @Bean
+    JwtCheckGatewayFilterFactory jwtCheckGatewayFilterFactory() {
+        return new JwtCheckGatewayFilterFactory();
+    }
 
 }
